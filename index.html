@@ -52,7 +52,9 @@
         <div id="outputMessage">QRコードが見つかりません。</div>
         <div hidden><b>Data:</b> <span id="outputData"></span></div>
     </div>
-    <input type="text" id="qr_text" style="width: 100%; font-size: 18px; padding: 5px; margin-top: 10px;">
+    <form action="">
+        <input type="text" id="qr_text">
+    </form>
     <script>
         let video = document.createElement("video");
         let canvasElement = document.getElementById("canvas");
@@ -102,10 +104,10 @@
                     outputMessage.hidden = true;
                     outputData.parentElement.hidden = false;
                     outputData.innerText = code.data;
-                    qr_text.value = code.data;
+                    textbox.value = code.data;
                 } else {
                     outputMessage.hidden = false;
-                    textbox.parentElement.hidden = true;
+                    outputData.parentElement.hidden = true;
                 }
             }
             requestAnimationFrame(tick);
