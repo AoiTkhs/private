@@ -11,31 +11,8 @@
             position: relative;
         }
 
-        h1 {
-            margin: 10px 0;
-            font-size: 40px;
-        }
-
-        #loadingMessage {
-            text-align: center;
-            padding: 40px;
-            background-color: #eee;
-        }
-
         #canvas {
             width: 100%;
-        }
-
-        #output {
-            margin-top: 20px;
-            background: #eee;
-            padding: 10px;
-            padding-bottom: 0;
-        }
-
-        #output div {
-            padding-bottom: 10px;
-            word-wrap: break-word;
         }
 
         #noQRFound {
@@ -49,11 +26,11 @@
     <div id="loadingMessage">（！）カメラにアクセスできません</div>
     <canvas id="canvas" hidden></canvas>
     <div id="output" hidden>
-        <div id="outputMessage">QRコードが見つかりません。</div>
-        <div hidden><b>Data:</b> <span id="outputData"></span></div>
+        <div id="outputMessage">QRコード検出中…</div>
+        <div hidden><span id="outputData"></span></div>
     </div>
     <form action="">
-        <input type="text" id="qr_text">
+        <input type="text" id="qr_text" placeholder="QRコードの情報が表示されます">
     </form>
     <script>
         let video = document.createElement("video");
