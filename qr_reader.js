@@ -18,12 +18,12 @@ function drawLine(begin, end, color) {
 }
 
 navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-    // ユーザーのデバイスのカメラにアクセスするためのメディアデバイスを取得
+    // ユーザーデバイスのカメラにアクセスするためのメディアデバイスを取得
 
     .then(function (stream) {
         video.srcObject = stream;
         video.setAttribute("playsinline", true);
-        // `playsinline`属性を設定することで、iOS Safariでビデオをインライン再生するよう指定しています。（ビデオが全画面表示になることを防止）
+        // `playsinline`属性を設定することで、iOS Safariでビデオをインライン再生するよう指定（ビデオが全画面表示になることを防止）
 
         video.play();
         // カメラ映像の再生を開始します。
