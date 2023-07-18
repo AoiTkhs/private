@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>8-4 流れるように出現（上から下）</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+    <link rel="stylesheet" type="text/css"
+        href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/8-4/css/reset.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <span class="slide-in upAnime">
+        <span class="slide-in_inner upAnimeInner">上から下へテキストが流れます。上から下へテキストが流れます。</span>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script>
+            function slideAnime() {
+                    //====上に動くアニメーションここから===
+                    $('.upAnime').each(function () {
+                        var elemPos = $(this).offset().top - 50;
+                        var scroll = $(window).scrollTop();
+                        var windowHeight = $(window).height();
+                        if (scroll >= elemPos - windowHeight) {
+                            // 上から下へ表示するクラスを付与
+                            // テキスト要素を挟む親要素（上）とテキスト要素を元位置でアニメーションをおこなう
+                            $(this).addClass("slideAnimeUpDown");
+                            // 要素を上枠外に移動しCSS アニメーションで上から元の位置に移動
+                            $(this).children(".upAnimeInner").addClass("slideAnimeDownUp");
+                            // 子要素は親要素のアニメーションに影響されないように逆の指定をし元の位置をキープするアニメーションをおこなう
+                        } else {
+                            // 上から下へ表示するクラスを取り除く
+                            $(this).removeClass("slideAnimeUpDown");
+                            $(this).children(".upAnimeInner").removeClass("slideAnimeDownUp");
+                        }
+                    });
+                }
+
+                // 画面をスクロールをしたら動かしたい場合の記述
+                $(window).scroll(function () {
+                    slideAnime();/* アニメーション用の関数を呼ぶ*/
+                });// ここまで画面をスクロールをしたら動かしたい場合の記述
+
+                // 画面が読み込まれたらすぐに動かしたい場合の記述
+                $(window).on('load', function () {
+                    slideAnime();/* アニメーション用の関数を呼ぶ*/
+                });// ここまで画面が読み込まれたらすぐに動かしたい場合の記述
+        </script>
+</body>
+
+</html>
