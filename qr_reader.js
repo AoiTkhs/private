@@ -26,11 +26,11 @@ navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
         // `playsinline`属性を設定することで、iOS Safariでビデオをインライン再生するよう指定（ビデオが全画面表示になることを防止）
 
         video.play();
-        // カメラ映像の再生を開始します。
+        // カメラ映像の再生を開始
 
         requestAnimationFrame(tick);
-        // フレームごとに指定されたコールバック関数を実行するようブラウザに要求。
-        // これによってカメラの映像を連続的に読み取ることが可能に。
+        // フレームごとに指定されたコールバック関数を実行するようブラウザに要求
+        // これによってカメラの映像を連続的に読み取ることが可能に
     });
 
 
