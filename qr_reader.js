@@ -7,6 +7,7 @@ let outputMessage = document.getElementById("outputMessage");
 let outputData = document.getElementById("outputData");
 let textbox = document.getElementById("qr_text");
 
+// 直線を描画するための関数
 function drawLine(begin, end, color) {
     canvas.beginPath();
     canvas.moveTo(begin.x, begin.y);
@@ -16,13 +17,22 @@ function drawLine(begin, end, color) {
     canvas.stroke();
 }
 
-// Use facingMode: environment to attemt to get the front camera on phones
-navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function (stream) {
-    video.srcObject = stream;
-    video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-    video.play();
-    requestAnimationFrame(tick);
-});
+navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+    // ユーザーのデバイスのカメラにアクセスするためのメディアデバイスを取得
+
+    .then(function (stream) {
+        video.srcObject = stream;
+        video.setAttribute("playsinline", true);
+        // `playsinline`属性を設定することで、iOS Safariでビデオをインライン再生するよう指定しています。（ビデオが全画面表示になることを防止）
+
+        video.play();
+        // カメラ映像の再生を開始します。
+
+        requestAnimationFrame(tick);
+        // フレームごとに指定されたコールバック関数を実行するようブラウザに要求。
+        // これによってカメラの映像を連続的に読み取ることが可能に。
+    });
+
 
 function tick() {
     loadingMessage.innerText = "カメラの映像を読み込んでいます…"
@@ -39,6 +49,7 @@ function tick() {
             inversionAttempts: "dontInvert",
         });
         if (code) {
+            // 検出したQRコードを赤線で囲む
             drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
             drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
             drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
