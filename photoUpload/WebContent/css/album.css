@@ -1,0 +1,65 @@
+body {
+    background-color: #fafafa;
+    color: #333;
+}
+
+.image-checkbox {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  /* モーダルのサイズを調整 */
+  .modal-dialog {
+    max-width: 80%;
+  }
+
+  /* 画像を 3 列に配置する */
+  .modal-body {
+    column-count: 3;
+    column-gap: 13px;
+  }
+
+  .dropzone {
+    align-items: center;
+      max-width: 40%;
+      margin: 50px auto;
+      padding: auto 0;
+      background: #fff;
+      height: 50px;
+      border-style: dashed;
+      border-width: 2px;
+      text-align: center;
+      cursor: pointer;
+  }
+
+  #dropzone {
+	margin-bottom: 50px
+  }
+
+  .drag-and-drop-area {
+    color: #ccc;
+    height: 200px;
+    margin: 30px 0 20px;
+    border-style: dashed;
+    border-width: 2px;
+    line-height: 200px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .dropzone .dz-message {
+    text-align: center;
+    margin: auto;
+    }
+
+  .upload_text {
+  	margin-top: 10px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .lb-dataContainer {
+	background-color: red;
+	height: 100px;
+  }
